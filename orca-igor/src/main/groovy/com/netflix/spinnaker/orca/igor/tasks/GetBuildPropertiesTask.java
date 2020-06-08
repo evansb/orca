@@ -16,6 +16,7 @@
 
 package com.netflix.spinnaker.orca.igor.tasks;
 
+import com.netflix.spinnaker.orca.api.pipeline.OverridableTimeoutRetryableTask;
 import com.netflix.spinnaker.orca.api.pipeline.TaskResult;
 import com.netflix.spinnaker.orca.api.pipeline.models.ExecutionStatus;
 import com.netflix.spinnaker.orca.api.pipeline.models.StageExecution;
@@ -32,7 +33,8 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 @Slf4j
-public class GetBuildPropertiesTask extends RetryableIgorTask<CIStageDefinition> {
+public class GetBuildPropertiesTask extends RetryableIgorTask<CIStageDefinition>
+    implements OverridableTimeoutRetryableTask {
   private final BuildService buildService;
 
   @Override
